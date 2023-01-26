@@ -1,0 +1,6 @@
+C:\Users\mahes\OneDrive\Desktop\DNETPune\DNETPune\16DemoDisconnected\bin\Debug\16DemoDisconnected.exe.config
+C:\Users\mahes\OneDrive\Desktop\DNETPune\DNETPune\16DemoDisconnected\bin\Debug\16DemoDisconnected.exe
+C:\Users\mahes\OneDrive\Desktop\DNETPune\DNETPune\16DemoDisconnected\bin\Debug\16DemoDisconnected.pdb
+C:\Users\mahes\OneDrive\Desktop\DNETPune\DNETPune\16DemoDisconnected\obj\Debug\16DemoDisconnected.csproj.CoreCompileInputs.cache
+C:\Users\mahes\OneDrive\Desktop\DNETPune\DNETPune\16DemoDisconnected\obj\Debug\16DemoDisconnected.exe
+C:\Users\mahes\OneDrive\Desktop\DNETPune\DNETPune\16DemoDisconnected\obj\Debug\16DemoDisconnected.pdb

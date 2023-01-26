@@ -1,0 +1,5 @@
+C:\Users\mahes\OneDrive\Desktop\DNETPune\DNETPune\SunbeamAnnotations\bin\Debug\SunbeamAnnotations.dll
+C:\Users\mahes\OneDrive\Desktop\DNETPune\DNETPune\SunbeamAnnotations\bin\Debug\SunbeamAnnotations.pdb
+C:\Users\mahes\OneDrive\Desktop\DNETPune\DNETPune\SunbeamAnnotations\obj\Debug\SunbeamAnnotations.csproj.CoreCompileInputs.cache
+C:\Users\mahes\OneDrive\Desktop\DNETPune\DNETPune\SunbeamAnnotations\obj\Debug\SunbeamAnnotations.dll
+C:\Users\mahes\OneDrive\Desktop\DNETPune\DNETPune\SunbeamAnnotations\obj\Debug\SunbeamAnnotations.pdb

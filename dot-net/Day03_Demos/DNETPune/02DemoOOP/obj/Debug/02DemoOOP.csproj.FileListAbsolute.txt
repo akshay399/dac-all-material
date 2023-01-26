@@ -1,0 +1,8 @@
+C:\Users\caksh\Desktop\sunbeam-git-daily-material\dot-net\Day03_Demos\DNETPune\02DemoOOP\bin\Debug\02DemoOOP.exe.config
+C:\Users\caksh\Desktop\sunbeam-git-daily-material\dot-net\Day03_Demos\DNETPune\02DemoOOP\bin\Debug\02DemoOOP.exe
+C:\Users\caksh\Desktop\sunbeam-git-daily-material\dot-net\Day03_Demos\DNETPune\02DemoOOP\bin\Debug\02DemoOOP.pdb
+C:\Users\caksh\Desktop\sunbeam-git-daily-material\dot-net\Day03_Demos\DNETPune\02DemoOOP\obj\Debug\02DemoOOP.csproj.AssemblyReference.cache
+C:\Users\caksh\Desktop\sunbeam-git-daily-material\dot-net\Day03_Demos\DNETPune\02DemoOOP\obj\Debug\02DemoOOP.csproj.SuggestedBindingRedirects.cache
+C:\Users\caksh\Desktop\sunbeam-git-daily-material\dot-net\Day03_Demos\DNETPune\02DemoOOP\obj\Debug\02DemoOOP.csproj.CoreCompileInputs.cache
+C:\Users\caksh\Desktop\sunbeam-git-daily-material\dot-net\Day03_Demos\DNETPune\02DemoOOP\obj\Debug\02DemoOOP.exe
+C:\Users\caksh\Desktop\sunbeam-git-daily-material\dot-net\Day03_Demos\DNETPune\02DemoOOP\obj\Debug\02DemoOOP.pdb

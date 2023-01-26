@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="punedbModelStoreContainer" CdmEntityContainer="PuneDBEntities">
+    <EntitySetMapping Name="Emps">
+      <EntityTypeMapping TypeName="punedbModel.Emp">
+        <MappingFragment StoreEntitySet="Emp">
+          <ScalarProperty Name="No" ColumnName="No" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmpDetails">
+      <EntityTypeMapping TypeName="punedbModel.EmpDetail">
+        <MappingFragment StoreEntitySet="EmpDetail">
+          <ScalarProperty Name="FullAddress" ColumnName="FullAddress" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="EmpNo" ColumnName="EmpNo" />
+          <ScalarProperty Name="DetailsID" ColumnName="DetailsID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spSelectByCity" FunctionName="punedbModel.Store.spSelectByCity">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="punedbModel.spSelectByCity_Result">
+          <ScalarProperty Name="No" ColumnName="No" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

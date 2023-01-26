@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="punedbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Emp">
+    <Key>
+      <PropertyRef Name="No" />
+    </Key>
+    <Property Name="No" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Address" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EmpDetail">
+    <Key>
+      <PropertyRef Name="DetailsID" />
+    </Key>
+    <Property Name="DetailsID" Type="int" Nullable="false" />
+    <Property Name="EmpNo" Type="int" />
+    <Property Name="PhoneNo" Type="varchar" MaxLength="14" />
+    <Property Name="FullAddress" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_EmpDetails_ToEmp">
+    <End Role="Emp" Type="Self.Emp" Multiplicity="0..1" />
+    <End Role="EmpDetail" Type="Self.EmpDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Emp">
+        <PropertyRef Name="No" />
+      </Principal>
+      <Dependent Role="EmpDetail">
+        <PropertyRef Name="EmpNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="spSelectByCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="city" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="punedbModelStoreContainer">
+    <EntitySet Name="Emp" EntityType="Self.Emp" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmpDetail" EntityType="Self.EmpDetail" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_EmpDetails_ToEmp" Association="Self.FK_EmpDetails_ToEmp">
+      <End Role="Emp" EntitySet="Emp" />
+      <End Role="EmpDetail" EntitySet="EmpDetail" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

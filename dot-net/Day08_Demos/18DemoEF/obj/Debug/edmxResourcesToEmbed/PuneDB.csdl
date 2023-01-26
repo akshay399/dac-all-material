@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="punedbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Emp">
+    <Key>
+      <PropertyRef Name="No" />
+    </Key>
+    <Property Name="No" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="EmpDetails" Relationship="punedbModel.FK_EmpDetails_ToEmp" FromRole="Emp" ToRole="EmpDetail" />
+  </EntityType>
+  <EntityContainer Name="PuneDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Emps" EntityType="Self.Emp" />
+    <EntitySet Name="EmpDetails" EntityType="punedbModel.EmpDetail" />
+    <AssociationSet Name="FK_EmpDetails_ToEmp" Association="punedbModel.FK_EmpDetails_ToEmp">
+      <End Role="Emp" EntitySet="Emps" />
+      <End Role="EmpDetail" EntitySet="EmpDetails" />
+    </AssociationSet>
+    <FunctionImport Name="spSelectByCity" ReturnType="Collection(punedbModel.spSelectByCity_Result)">
+      <Parameter Name="city" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="EmpDetail">
+    <Key>
+      <PropertyRef Name="DetailsID" />
+    </Key>
+    <Property Name="DetailsID" Type="Int32" Nullable="false" />
+    <Property Name="EmpNo" Type="Int32" />
+    <Property Name="PhoneNo" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+    <Property Name="FullAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Emp" Relationship="punedbModel.FK_EmpDetails_ToEmp" FromRole="EmpDetail" ToRole="Emp" />
+  </EntityType>
+  <Association Name="FK_EmpDetails_ToEmp">
+    <End Type="punedbModel.Emp" Role="Emp" Multiplicity="0..1" />
+    <End Type="punedbModel.EmpDetail" Role="EmpDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Emp">
+        <PropertyRef Name="No" />
+      </Principal>
+      <Dependent Role="EmpDetail">
+        <PropertyRef Name="EmpNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="spSelectByCity_Result">
+    <Property Type="Int32" Name="No" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>

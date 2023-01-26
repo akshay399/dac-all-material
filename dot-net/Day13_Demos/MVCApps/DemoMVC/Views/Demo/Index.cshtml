@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Welcome Home";
+    Layout = "~/Views/Shared/Master.cshtml";
+}
+
+@model List<DemoMVC.Models.Emp>
+
+<script>
+    function handleRightClick(e) {
+        debugger;
+        e.preventDefault();
+    }
+</script>
+<div oncontextmenu="handleRightClick(event)" class="table-responsive" style="margin:20px">
+    <div>
+        hi
+        bye
+        @*&lt;script&gt;alert('hi') &lt;/script &gt;*@
+
+        @*<script>window.location.href = "https://sunbeaminfo.in/"  </script>*@
+    </div>
+        <a class="btn btn-primary" href="/Demo/Create">Add New Record</a>
+        <hr />
+        <table class="table table-bordered">
+            @foreach (var emp in Model)
+            {
+                <tr>
+                    <td>@emp.No</td>
+                    <td>@emp.Name</td>
+                    <td>@emp.Address</td>
+                    <td>
+                        @*<a href="/Demo/Edit/@emp.No" class="btn btn-warning">Edit</a>*@
+                        <a href="/Demo/Edit?no=@emp.No&name=@emp.Name" class="btn btn-warning">Edit</a>
+                    </td>
+                    <td>
+                        <a href="/Demo/Delete/@emp.No" class="btn btn-danger">Delete</a>
+                    </td>
+
+
+                </tr>
+            }
+        </table>
+    </div>
+

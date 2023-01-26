@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="punedbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="No" />
+          </Key>
+          <Property Name="No" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Topics">
+          <Key>
+            <PropertyRef Name="TopicID" />
+          </Key>
+          <Property Name="TopicID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Desc" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Trainers">
+          <Key>
+            <PropertyRef Name="TrainerID" />
+          </Key>
+          <Property Name="TrainerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TrainerTopic">
+          <Key>
+            <PropertyRef Name="Trainers_TrainerID" />
+            <PropertyRef Name="Topics_TopicID" />
+          </Key>
+          <Property Name="Trainers_TrainerID" Type="int" Nullable="false" />
+          <Property Name="Topics_TopicID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_TrainerTopic_Topic">
+          <End Role="Topics" Type="Self.Topics" Multiplicity="1" />
+          <End Role="TrainerTopic" Type="Self.TrainerTopic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Topics">
+              <PropertyRef Name="TopicID" />
+            </Principal>
+            <Dependent Role="TrainerTopic">
+              <PropertyRef Name="Topics_TopicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrainerTopic_Trainer">
+          <End Role="Trainers" Type="Self.Trainers" Multiplicity="1" />
+          <End Role="TrainerTopic" Type="Self.TrainerTopic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainers">
+              <PropertyRef Name="TrainerID" />
+            </Principal>
+            <Dependent Role="TrainerTopic">
+              <PropertyRef Name="Trainers_TrainerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="punedbModelStoreContainer">
+          <EntitySet Name="Test" EntityType="Self.Test" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Topics" EntityType="Self.Topics" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trainers" EntityType="Self.Trainers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrainerTopic" EntityType="Self.TrainerTopic" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TrainerTopic_Topic" Association="Self.FK_TrainerTopic_Topic">
+            <End Role="Topics" EntitySet="Topics" />
+            <End Role="TrainerTopic" EntitySet="TrainerTopic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrainerTopic_Trainer" Association="Self.FK_TrainerTopic_Trainer">
+            <End Role="Trainers" EntitySet="Trainers" />
+            <End Role="TrainerTopic" EntitySet="TrainerTopic" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="punedbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Emp">
+          <Key>
+            <PropertyRef Name="No" />
+          </Key>
+          <Property Name="No" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="punedbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Emps" EntityType="Self.Emp" />
+          <EntitySet Name="Trainers" EntityType="punedbModel.Trainer" />
+          <EntitySet Name="Topics" EntityType="punedbModel.Topic" />
+          <AssociationSet Name="TrainerTopic" Association="punedbModel.TrainerTopic">
+            <End Role="Trainer" EntitySet="Trainers" />
+            <End Role="Topic" EntitySet="Topics" />
+          </AssociationSet>
+          <EntitySet Name="Tests" EntityType="punedbModel.Test" />
+        </EntityContainer>
+        <EntityType Name="Trainer">
+          <Key>
+            <PropertyRef Name="TrainerID" />
+          </Key>
+          <Property Name="TrainerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Topics" Relationship="punedbModel.TrainerTopic" FromRole="Trainer" ToRole="Topic" />
+        </EntityType>
+        <EntityType Name="Topic">
+          <Key>
+            <PropertyRef Name="TopicID" />
+          </Key>
+          <Property Name="TopicID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Desc" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Trainers" Relationship="punedbModel.TrainerTopic" FromRole="Topic" ToRole="Trainer" />
+        </EntityType>
+        <Association Name="TrainerTopic">
+          <End Type="punedbModel.Trainer" Role="Trainer" Multiplicity="*" />
+          <End Type="punedbModel.Topic" Role="Topic" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="No" />
+          </Key>
+          <Property Name="No" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="punedbModelStoreContainer" CdmEntityContainer="punedbEntities">
+    <EntitySetMapping Name="Trainers">
+      <EntityTypeMapping TypeName="IsTypeOf(punedbModel.Trainer)">
+        <MappingFragment StoreEntitySet="Trainers">
+          <ScalarProperty Name="TrainerID" ColumnName="TrainerID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Topics">
+      <EntityTypeMapping TypeName="IsTypeOf(punedbModel.Topic)">
+        <MappingFragment StoreEntitySet="Topics">
+          <ScalarProperty Name="TopicID" ColumnName="TopicID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="TrainerTopic" TypeName="punedbModel.TrainerTopic" StoreEntitySet="TrainerTopic">
+      <EndProperty Name="Trainer">
+        <ScalarProperty Name="TrainerID" ColumnName="Trainers_TrainerID" />
+      </EndProperty>
+      <EndProperty Name="Topic">
+        <ScalarProperty Name="TopicID" ColumnName="Topics_TopicID" />
+      </EndProperty>
+    </AssociationSetMapping>
+          <EntitySetMapping Name="Tests">
+            <EntityTypeMapping TypeName="punedbModel.Test">
+              <MappingFragment StoreEntitySet="Test">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="No" ColumnName="No" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

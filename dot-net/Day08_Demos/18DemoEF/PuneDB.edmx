@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="punedbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Emp">
+          <Key>
+            <PropertyRef Name="No" />
+          </Key>
+          <Property Name="No" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EmpDetail">
+          <Key>
+            <PropertyRef Name="DetailsID" />
+          </Key>
+          <Property Name="DetailsID" Type="int" Nullable="false" />
+          <Property Name="EmpNo" Type="int" />
+          <Property Name="PhoneNo" Type="varchar" MaxLength="14" />
+          <Property Name="FullAddress" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_EmpDetails_ToEmp">
+          <End Role="Emp" Type="Self.Emp" Multiplicity="0..1" />
+          <End Role="EmpDetail" Type="Self.EmpDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Emp">
+              <PropertyRef Name="No" />
+            </Principal>
+            <Dependent Role="EmpDetail">
+              <PropertyRef Name="EmpNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="spSelectByCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="city" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="punedbModelStoreContainer">
+          <EntitySet Name="Emp" EntityType="Self.Emp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpDetail" EntityType="Self.EmpDetail" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_EmpDetails_ToEmp" Association="Self.FK_EmpDetails_ToEmp">
+            <End Role="Emp" EntitySet="Emp" />
+            <End Role="EmpDetail" EntitySet="EmpDetail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="punedbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Emp">
+          <Key>
+            <PropertyRef Name="No" />
+          </Key>
+          <Property Name="No" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EmpDetails" Relationship="punedbModel.FK_EmpDetails_ToEmp" FromRole="Emp" ToRole="EmpDetail" />
+        </EntityType>
+        <EntityContainer Name="PuneDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Emps" EntityType="Self.Emp" />
+          <EntitySet Name="EmpDetails" EntityType="punedbModel.EmpDetail" />
+          <AssociationSet Name="FK_EmpDetails_ToEmp" Association="punedbModel.FK_EmpDetails_ToEmp">
+            <End Role="Emp" EntitySet="Emps" />
+            <End Role="EmpDetail" EntitySet="EmpDetails" />
+          </AssociationSet>
+          <FunctionImport Name="spSelectByCity" ReturnType="Collection(punedbModel.spSelectByCity_Result)">
+            <Parameter Name="city" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="EmpDetail">
+          <Key>
+            <PropertyRef Name="DetailsID" />
+          </Key>
+          <Property Name="DetailsID" Type="Int32" Nullable="false" />
+          <Property Name="EmpNo" Type="Int32" />
+          <Property Name="PhoneNo" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="FullAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Emp" Relationship="punedbModel.FK_EmpDetails_ToEmp" FromRole="EmpDetail" ToRole="Emp" />
+        </EntityType>
+        <Association Name="FK_EmpDetails_ToEmp">
+          <End Type="punedbModel.Emp" Role="Emp" Multiplicity="0..1" />
+          <End Type="punedbModel.EmpDetail" Role="EmpDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Emp">
+              <PropertyRef Name="No" />
+            </Principal>
+            <Dependent Role="EmpDetail">
+              <PropertyRef Name="EmpNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="spSelectByCity_Result">
+          <Property Type="Int32" Name="No" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="punedbModelStoreContainer" CdmEntityContainer="PuneDBEntities">
+          <EntitySetMapping Name="Emps">
+            <EntityTypeMapping TypeName="punedbModel.Emp">
+              <MappingFragment StoreEntitySet="Emp">
+                <ScalarProperty Name="No" ColumnName="No" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpDetails">
+            <EntityTypeMapping TypeName="punedbModel.EmpDetail">
+              <MappingFragment StoreEntitySet="EmpDetail">
+                <ScalarProperty Name="FullAddress" ColumnName="FullAddress" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="EmpNo" ColumnName="EmpNo" />
+                <ScalarProperty Name="DetailsID" ColumnName="DetailsID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spSelectByCity" FunctionName="punedbModel.Store.spSelectByCity">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="punedbModel.spSelectByCity_Result">
+                <ScalarProperty Name="No" ColumnName="No" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

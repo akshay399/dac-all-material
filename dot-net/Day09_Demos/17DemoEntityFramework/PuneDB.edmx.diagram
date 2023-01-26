@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="35b855fb2f1d4dbd9f782a2d0bfcef9d" Name="Diagram1">
+        <EntityTypeShape EntityType="punedbModel.Emp" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="punedbModel.Trainer" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="punedbModel.Topic" Width="1.5" PointX="8.5" PointY="0.625" />
+        <AssociationConnector Association="punedbModel.TrainerTopic" />
+        <EntityTypeShape EntityType="punedbModel.Test" Width="1.5" PointX="2.875" PointY="0.875" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

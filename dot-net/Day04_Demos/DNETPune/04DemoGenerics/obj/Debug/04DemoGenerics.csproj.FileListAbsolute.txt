@@ -1,0 +1,8 @@
+C:\Users\caksh\Desktop\sunbeam-git-daily-material\dot-net\Day04_Demos\DNETPune\04DemoGenerics\bin\Debug\04DemoGenerics.exe.config
+C:\Users\caksh\Desktop\sunbeam-git-daily-material\dot-net\Day04_Demos\DNETPune\04DemoGenerics\bin\Debug\04DemoGenerics.exe
+C:\Users\caksh\Desktop\sunbeam-git-daily-material\dot-net\Day04_Demos\DNETPune\04DemoGenerics\bin\Debug\04DemoGenerics.pdb
+C:\Users\caksh\Desktop\sunbeam-git-daily-material\dot-net\Day04_Demos\DNETPune\04DemoGenerics\obj\Debug\04DemoGenerics.csproj.AssemblyReference.cache
+C:\Users\caksh\Desktop\sunbeam-git-daily-material\dot-net\Day04_Demos\DNETPune\04DemoGenerics\obj\Debug\04DemoGenerics.csproj.SuggestedBindingRedirects.cache
+C:\Users\caksh\Desktop\sunbeam-git-daily-material\dot-net\Day04_Demos\DNETPune\04DemoGenerics\obj\Debug\04DemoGenerics.csproj.CoreCompileInputs.cache
+C:\Users\caksh\Desktop\sunbeam-git-daily-material\dot-net\Day04_Demos\DNETPune\04DemoGenerics\obj\Debug\04DemoGenerics.exe
+C:\Users\caksh\Desktop\sunbeam-git-daily-material\dot-net\Day04_Demos\DNETPune\04DemoGenerics\obj\Debug\04DemoGenerics.pdb

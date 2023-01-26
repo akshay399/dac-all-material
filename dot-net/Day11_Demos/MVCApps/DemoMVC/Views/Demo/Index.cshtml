@@ -1,0 +1,35 @@
+﻿@model List<DemoMVC.Models.Emp>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="table-responsive" style="margin:20px">
+        <a class="btn btn-primary" href="/Demo/Create">Add New Record</a>
+        <hr />
+        <table class="table table-bordered">
+            @foreach (var emp in Model)
+            {
+            <tr>
+                <td>@emp.No</td>
+                <td>@emp.Name</td>
+                <td>@emp.Address</td>
+                <td>
+                    <a href="/Demo/Edit/@emp.No" class="btn btn-warning">Edit</a>
+                </td>
+                <td>
+                    <a href="/Demo/Delete/@emp.No" class="btn btn-danger">Delete</a>
+                </td>
+
+
+            </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>

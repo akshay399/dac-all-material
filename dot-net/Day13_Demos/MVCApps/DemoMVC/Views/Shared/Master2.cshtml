@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</head>
+<body>
+    <div style="height: 100px; width: 100%;
+                background-color: deeppink">
+        <center><h1>Master 2</h1></center>
+    </div>
+    <hr />
+    <h2>
+        <a href="/SB/Index">Home</a> |
+        <a href="/SB/Contact">Contact</a>
+        <a href="/SB/About">About</a> |
+
+    </h2>
+    <hr />
+    <br />
+        @RenderSection("upper", true);
+    <br />
+        @RenderBody();
+    <br />
+    <br />
+    <br />
+
+    <hr />
+    <div style="height: 100px; width: 100%;
+                background-color: yellow">
+        <center><h1>Footer</h1></center>
+        @RenderSection("terms", false);
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+
+	aspnet_isapi.dll
+
+	class DefaultHandler:IhttpHandler
+   {
+		ProcessRequest(HttpContext context)
+     {
+			//read webconfig file  .. tag httpHandler
+        // looks for any suggestions given by developer
+  		<httpHandlers>
+      <add path="*.sunbeam" type="SunbeamHandler,SunbeamHandler.SunbeamHandler"></add>
+    </httpHandlers>
+			
+  			//using reflection an object is created of System.Web.MVC.MVCHandler
+			obj.ProcessRequest will called
+     }
+   }

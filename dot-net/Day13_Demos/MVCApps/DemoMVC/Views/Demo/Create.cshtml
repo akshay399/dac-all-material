@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Create New Record";
+    Layout = "~/Views/Shared/Master.cshtml";
+}
+@model DemoMVC.Models.Emp
+
+<form action="/Demo/AfterCreate" method="post">
+    <center>
+        <table>
+
+            <tr>
+                <td>Name</td>
+                <td>
+                    <input type="text" name="Name" value="" />
+                </td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td>
+                    <input type="text" name="Address" value="" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" class="btn btn-primary" name="btn" value="Add New Record" />
+                </td>
+            </tr>
+        </table>
+    </center>
+</form>

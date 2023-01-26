@@ -1,0 +1,46 @@
+﻿@model DemoMVC.Models.Emp
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</head>
+<body>
+    <form action="/Demo/Edit" method="post">
+        @*<form action="/Demo/AfterEdit" method="post">*@
+        <center>
+            <table>
+                <tr>
+                    <td>No</td>
+                    <td>
+                        @Model.No <br />
+                        <input type="hidden" name="No" value="@Model.No" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td>
+                        @*<input type="text" name="Name" value="@Model.Name" />*@
+                        @Html.TextBox("Name")
+                    </td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td>
+                        <input type="text" name="Address" value="@Model.Address" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" class="btn btn-warning" name="btn" value="Update" />
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </form>
+</body>
+</html>

@@ -1,0 +1,10 @@
+C:\Users\mahes\OneDrive\Desktop\DNETPune\DNETPune\18DemoEF\bin\Debug\18DemoEF.exe.config
+C:\Users\mahes\OneDrive\Desktop\DNETPune\DNETPune\18DemoEF\bin\Debug\18DemoEF.exe
+C:\Users\mahes\OneDrive\Desktop\DNETPune\DNETPune\18DemoEF\bin\Debug\18DemoEF.pdb
+C:\Users\mahes\OneDrive\Desktop\DNETPune\DNETPune\18DemoEF\bin\Debug\EntityFramework.dll
+C:\Users\mahes\OneDrive\Desktop\DNETPune\DNETPune\18DemoEF\bin\Debug\EntityFramework.xml
+C:\Users\mahes\OneDrive\Desktop\DNETPune\DNETPune\18DemoEF\obj\Debug\18DemoEF.csproj.AssemblyReference.cache
+C:\Users\mahes\OneDrive\Desktop\DNETPune\DNETPune\18DemoEF\obj\Debug\18DemoEF.csproj.CoreCompileInputs.cache
+C:\Users\mahes\OneDrive\Desktop\DNETPune\DNETPune\18DemoEF\obj\Debug\18DemoEF.csproj.CopyComplete
+C:\Users\mahes\OneDrive\Desktop\DNETPune\DNETPune\18DemoEF\obj\Debug\18DemoEF.exe
+C:\Users\mahes\OneDrive\Desktop\DNETPune\DNETPune\18DemoEF\obj\Debug\18DemoEF.pdb

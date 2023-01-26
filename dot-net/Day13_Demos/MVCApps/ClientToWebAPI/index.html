@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Client To Web API</title>
+</head>
+<body>
+    <button onclick="GetData()">Click Me</button>
+    <hr>
+    <div id="mydiv" style="border: 1px solid black;">
+
+    </div>
+    <script>
+        function GetData()
+        {
+            var helper = new  XMLHttpRequest();
+            var refTomydiv = document.getElementById("mydiv");
+            helper.onreadystatechange = ()=>{
+              if(helper.readyState == 4 && helper.status ==200)
+              {
+                debugger;
+               var result = 
+                JSON.parse( helper.responseText);
+                result.map((emp)=>{
+                    refTomydiv.innerHTML = refTomydiv.innerHTML + 
+                            `<h1>Welcome ${emp.Name} from ${emp.Address}</h1>`
+                });
+
+              }
+            }
+           
+            helper.open("GET", "http://localhost:59124/api/emps");
+    
+            helper.send();
+        }
+    </script>
+</body>
+</html>

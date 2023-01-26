@@ -1,0 +1,17 @@
+Func<Emp, bool> pointer = (emp) => 
+           {
+             return emp.Address.StartsWith("P");
+           };
+
+Where(this empsCollection, pointer)
+{
+  filteredCollection;
+	forEach(Emp emp in empsCollection)
+   {
+       if(pointer(emp))
+       {
+					filteredCollection.Add(emp);
+       }
+   }
+return filteredCollection
+}

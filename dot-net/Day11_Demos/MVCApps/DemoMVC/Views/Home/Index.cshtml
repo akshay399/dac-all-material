@@ -1,0 +1,16 @@
+﻿@model DemoMVC.Models.Customer
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Index</title>
+</head>
+<body>
+    <form action="/Home/AfterIndex" method="post">
+        ID:<input type="text" name="ID" value="@Model.ID" /><br />
+        Name:<input type="text" name="Name" value="@Model.Name" />
+             <br />
+        <input type="submit" name="btn" value="Update" />
+    </form>
+</body>
+</html>
